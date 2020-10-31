@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueCompositionApi, { defineComponent, ref } from '@vue/composition-api';
 import { mount } from '@vue/test-utils';
-import { getTheme, provideTheme, useTheme } from '@/theme';
+import { getTheme, useProvideTheme, useTheme } from '@/theme';
 
 Vue.use(VueCompositionApi);
 
@@ -35,7 +35,7 @@ describe('theme', () => {
                 ChildComponent
             },
             setup() {
-                provideTheme(schema);
+                useProvideTheme(schema);
                 const childComponent = ref<typeof ChildComponent | null>(null);
                 return {
                     childComponent

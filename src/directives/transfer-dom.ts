@@ -7,6 +7,8 @@ import { DirectiveOptions } from 'vue';
  * @author Matthew Meehan <matusmarx@hotmail.com>
  * 
  * @variation Troy Morehouse <https://github.com/tmorehouse/vue-transfer-dom>
+ * 
+ * @throws Error if the id passed into the directive, I.E. #bar in the example below, does not exist in the DOM
  *
  * @example
  *

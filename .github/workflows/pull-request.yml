@@ -37,5 +37,5 @@ jobs:
           
       - run: pnpm install
       - run: pnpm build
-      - run: pnpm test
+      - run: pnpm test:unit
         if: matrix.node-version == '14.x'

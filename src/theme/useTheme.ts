@@ -4,7 +4,13 @@ import type { Schema } from '.';
 
 /**
  * Injects the theme into this component
+ * 
+ * @throws Error if useProvideTheme was not invoked in a parent component.
  */
-export function useTheme<T extends Schema>(): T {
-    return inject<T>(ThemeSymbol)!;
+export function useTheme<Theme extends Schema>(): Theme {
+    const theme = inject<Theme>(ThemeSymbol);
+    if (theme == null) {
+        throw new Error('useProvideTheme not invoked at parent component.');
+    }
+    return theme;
 }

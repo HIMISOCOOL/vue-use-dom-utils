@@ -20,7 +20,7 @@ jobs:
         with:
           version: 5.10.2
       - run: pnpm install
-      - run: pnpm test
+      - run: pnpm test:unit
 
   publish-npm:
     needs: build

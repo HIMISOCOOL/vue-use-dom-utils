@@ -1,4 +1,4 @@
 export * from './provideTheme';
-export * from './useTheme';
+export * from './useInjectTheme';
 
-export type Schema = { [key: string]: string }
+export type Schema<T = string> = { [key: string]: T }

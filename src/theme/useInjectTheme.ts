@@ -7,7 +7,7 @@ import type { Schema } from '.';
  * 
  * @throws Error if useProvideTheme was not invoked in a parent component.
  */
-export function useTheme<Theme extends Schema>(): Theme {
+export function useInjectTheme<Theme extends Schema>(): Theme {
     const theme = inject<Theme>(ThemeSymbol);
     if (theme == null) {
         throw new Error('useProvideTheme not invoked at parent component.');

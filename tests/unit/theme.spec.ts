@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueCompositionApi, { defineComponent, ref } from '@vue/composition-api';
 import { mount } from '@vue/test-utils';
-import { getTheme, useProvideTheme, useTheme } from '@/theme';
+import { getTheme, useProvideTheme, useInjectTheme } from '@/theme';
 
 Vue.use(VueCompositionApi);
 
@@ -23,7 +23,7 @@ describe('theme', () => {
     describe('useTheme', () => {
         const ChildComponent = defineComponent({
             setup() {
-                const theme = useTheme<typeof schema>();
+                const theme = useInjectTheme<typeof schema>();
                 return {
                     theme
                 };

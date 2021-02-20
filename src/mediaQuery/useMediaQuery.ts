@@ -1,17 +1,20 @@
-import { inject, computed } from '@vue/composition-api';
-import { BreakpointSymbol } from './provideMediaQuery';
-import type { BreakpointGetters } from './provideMediaQuery';
-import type { Breakpoints } from '.';
+import { onBeforeUnmount, ref } from '@vue/composition-api';
+import type { Ref } from '@vue/composition-api';
 
-/**
- * Injects the media queries into this component.
- * 
- * @throws Error if useProvideMediaQuery was not invoked in a parent component.
- */
-export function useMediaQuery<B extends Breakpoints>(): BreakpointGetters<B> {
-    const breakpoints = inject<BreakpointGetters<B>>(BreakpointSymbol);
-    if (breakpoints == null) {
-        throw new Error('useProvideMediaQuery not invoked at parent component.');
-    }
-    return breakpoints;
-}
+export const useMediaQuery = (mediaQuery: string): Ref<boolean> => {
+    const matches = ref(false);
+    const mediaQueryChangeHandler = (value: boolean) => {
+        matches.value = value;
+    };
+    const mql = window.matchMedia(mediaQuery);
+    mediaQueryChangeHandler(mql.matches);
+    mql.addEventListener('change', ev => mediaQueryChangeHandler(ev.matches));
+
+    onBeforeUnmount(() => {
+        mql.removeEventListener('change', ev =>
+            mediaQueryChangeHandler(ev.matches)
+        );
+    });
+
+    return matches;
+};

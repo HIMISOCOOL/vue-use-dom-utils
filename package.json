@@ -1,59 +1,76 @@
 {
-  "name": "vue-use-dom-utils",
-  "version": "0.1.1",
-  "author": {
-    "email": "matusmarx@hotmail.com",
-    "name": "Matthew Meehan",
-    "url": "https://github.com/HIMISOCOOL"
-  },
-  "license": "LGPL-3.0-only",
-  "main": "dist/vue-use-dom-utils.common.js",
-  "typings": "dist/types/index.d.ts",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "typescript": "tsc -p tsconfig.declaration.json",
-    "build:library": "vue-cli-service build --target lib --name vue-use-dom-utils src/index.ts --production",
-    "build": "npm-run-all build:library typescript",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
-  },
-  "bugs": {
-    "url": "https://github.com/HIMISOCOOL/vue-use-dom-utils/issues"
-  },
-  "homepage": "https://github.com/HIMISOCOOL/vue-use-dom-utils#readme",
-  "devDependencies": {
-    "@types/jest": "^24.0.19",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/composition-api": "^1.0.0-beta.18",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/eslint-config-typescript": "^5.0.2",
-    "@vue/test-utils": "^1.0.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-vue": "^6.2.2",
-    "lint-staged": "^9.5.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^1.19.1",
-    "typescript": "~3.9.3",
-    "vue": "^2.5",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-beta.18",
-    "vue": ">=2.5 < 3"
-  }
+    "name": "vue-use-dom-utils",
+    "version": "0.2.0",
+    "description": "Provide utils for interacting with the dom for the composition api",
+    "keywords": [
+        "vue",
+        "composition-api",
+        "vue hooks",
+        "dom",
+        "css variables"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HIMISOCOOL/vue-use-dom-utils.git"
+    },
+    "author": {
+        "email": "matusmarx@hotmail.com",
+        "name": "Matthew Meehan",
+        "url": "https://github.com/HIMISOCOOL"
+    },
+    "license": "LGPL-3.0-only",
+    "main": "index.ts",
+    "module": "dist/vue-use-dom-utils.esm.js",
+    "unpkg": "dist/vue-use-dom-utils.prod.js",
+    "jsdelivr": "dist/vue-use-dom-utils.prod.js",
+    "typings": "dist/index.d.ts",
+    "scripts": {
+        "clean": "rimraf dist",
+        "typescript": "tsc -p tsconfig.declaration.json",
+        "build:library": "rollup -c",
+        "prebuild": "pnpm clean",
+        "build": "npm-run-all build:library typescript",
+        "test:unit": "",
+        "lint": "eslint src --ext .ts"
+    },
+    "bugs": {
+        "url": "https://github.com/HIMISOCOOL/vue-use-dom-utils/issues"
+    },
+    "homepage": "https://github.com/HIMISOCOOL/vue-use-dom-utils#readme",
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^11.2.0",
+        "@types/jest": "^24.0.19",
+        "@typescript-eslint/eslint-plugin": "^2.33.0",
+        "@typescript-eslint/parser": "^2.33.0",
+        "@vue/composition-api": "^1.0.0-rc.2",
+        "@vue/eslint-config-prettier": "^6.0.0",
+        "@vue/eslint-config-typescript": "^5.0.2",
+        "@vue/test-utils": "^1.0.3",
+        "eslint": "^6.7.2",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-vue": "^6.2.2",
+        "lint-staged": "^9.5.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^1.19.1",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.39.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "typescript": "~3.9.3",
+        "vue": "^2.5",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.{js,jsx,vue,ts,tsx}": [
+            "vue-cli-service lint",
+            "git add"
+        ]
+    },
+    "peerDependencies": {
+        "@vue/composition-api": "^1.0.0-rc.2",
+        "vue": ">=2.5 < 3"
+    }
 }
